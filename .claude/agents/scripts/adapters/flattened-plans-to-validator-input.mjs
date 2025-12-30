@@ -11,11 +11,11 @@
  *     --out <output.json> \
  *     --base-url <baseUrl> \
  *     --login-required true|false \
- *     --required-role "<role>" \
  *     --screenshots-dir "<path>" \
  *     --reports-dir "<path>" \
  *     --evidence-file "<path>" \
- *     --summary-file "<path>"
+ *     --summary-file "<path>" \
+ *     [--required-role "<role>"]  # optional
  */
 
 import { readFileSync, writeFileSync } from 'node:fs';
@@ -31,7 +31,6 @@ function parseArgs(argv) {
     'out',
     'base-url',
     'login-required',
-    'required-role',
     'screenshots-dir',
     'reports-dir',
     'evidence-file',
@@ -300,7 +299,7 @@ function main() {
   const config = {
     baseUrl: args['base-url'],
     loginRequired: args['login-required'],
-    requiredRole: args['required-role'],
+    requiredRole: args['required-role'] || '',
     screenshotsDir: args['screenshots-dir'],
     reportsDir: args['reports-dir'],
     evidenceFile: args['evidence-file'],

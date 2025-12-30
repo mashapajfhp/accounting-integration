@@ -10,7 +10,6 @@ node scripts/adapters/flattened-plans-to-validator-input.mjs \
   --out <output.json> \
   --base-url <baseUrl> \
   --login-required true|false \
-  --required-role "<role>" \
   --screenshots-dir "<path>" \
   --reports-dir "<path>" \
   --evidence-file "<path>" \
@@ -25,11 +24,16 @@ node scripts/adapters/flattened-plans-to-validator-input.mjs \
 | `--out` | Path to write output JSON file |
 | `--base-url` | Base URL for validation (e.g., `https://app.bayzat.com`) |
 | `--login-required` | Whether login is required (`true` or `false`) |
-| `--required-role` | Required user role (e.g., `HR Admin`) |
 | `--screenshots-dir` | Directory path for screenshots |
 | `--reports-dir` | Directory path for reports |
 | `--evidence-file` | Path for evidence JSON file |
 | `--summary-file` | Path for summary Markdown file |
+
+### Optional Arguments
+
+| Argument | Description |
+|----------|-------------|
+| `--required-role` | Required user role (e.g., `HR Admin`). Defaults to empty string. |
 
 ## Input Formats
 
@@ -129,7 +133,7 @@ The adapter produces a single JSON object matching the Interface Reality Validat
   "validation_config": {
     "base_url": "https://app.bayzat.com",
     "login_required": true,
-    "required_role": "HR Admin",
+    "required_role": "",
     "max_attempts_per_validation": 2,
     "screenshot_on_each_step": true,
     "timeout_ms": 30000,
@@ -164,7 +168,6 @@ node scripts/adapters/flattened-plans-to-validator-input.mjs \
   --out ./validator-input/daily-wage-validator-input.json \
   --base-url "https://app.bayzat.com" \
   --login-required true \
-  --required-role "HR Admin" \
   --screenshots-dir "/runs/daily-wage-001/screenshots" \
   --reports-dir "/runs/daily-wage-001/reports" \
   --evidence-file "/runs/daily-wage-001/reports/evidence.json" \
